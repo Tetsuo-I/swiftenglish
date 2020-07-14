@@ -1,0 +1,8 @@
+<h1>id: <%= @item.id %> のタスク詳細ページ</h1>
+
+<p>日本語: <%= @item.content %></p>
+<p>英語: <%= @item.status %></p>
+
+<%= link_to '一覧に戻る', items_path %>
+<%= link_to 'このアイテムを編集する', edit_item_path(@item) %>
+<%= link_to 'このアイテムを削除する', @item, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(id: params[:id])
     @user.destroy
-    redirect_to("/")
+    redirect_to root_url
   end
   
   private

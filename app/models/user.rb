@@ -7,4 +7,19 @@ class User < ApplicationRecord
     has_secure_password
     
     has_many :items
+    has_many :likes, dependent: :destroy
+    has_many :like_items, through: :likes, source: :item
+   
+    def like(item)
+      self.likes.find_or_create_by(item_id: item.id)
+    end
+  
+    def unlike(item)
+      self.likes.find_by(item_id: item.id).destroy
+    end
+  
+    def like?(item)
+      self.like_items.include?(item)
+    end
+
 end

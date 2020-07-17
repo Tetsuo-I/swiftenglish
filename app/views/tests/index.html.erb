@@ -1,0 +1,21 @@
+<h2>テスト一覧</h2>
+<p>Likeしたアイテムのみ表示/5秒経過かボタンを押すと答えが表示されます。</p>
+
+<table class="table table-borderless mt-3">
+  <tr><th>Japanese</th><th>English</th>
+  <% @tests.each do |test| %>
+    <tr><td><%= test.japanese %></td><td style ="visibility:hidden;"id="visi"><%= test.english %></td><td><input type="button" value="表示" onclick="hyoji2()"></td></tr>
+  <% end %>
+</table>
+
+<%= paginate @tests %>
+<script>
+
+function hyoji2()
+{
+    document.getElementById("visi").style.visibility="visible";
+ }
+
+setTimeout(hyoji2, 5000);
+
+</script>

@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'signup', to: 'users#new'
-  resources :users, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create, :destroy] do
+    member do
+      get :likes
+    end
+  end
   
   resources :items
+  resources :likes, only: [:create, :destroy]
+  
+  get 'test', to: 'tests#index'
 end

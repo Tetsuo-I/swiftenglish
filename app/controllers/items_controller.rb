@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: [:destroy, :show, :edit, :update]
   
   def index
-    @items = current_user.items.order(id: :desc)
+    @items = current_user.items.order(id: :desc).page(params[:page]).per(5)
   end
 
   def show
@@ -16,10 +16,10 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(item_params)
     if @item.save
-      flash[:success] = ‘Itemを投稿しました。'
+      flash[:success] = 'アイテムを投稿しました。'
       redirect_to root_url
     else
-      flash.now[:danger] = ‘Itemの投稿に失敗しました。'
+      flash.now[:danger] = 'アイテムの投稿に失敗しました。'
       render :new
     end
   end
@@ -29,17 +29,17 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      flash[:success] = ‘Item が正常に修正されました'
+      flash[:success] = 'アイテムが正常に修正されました'
       redirect_to @item
     else
-      flash.now[:danger] = ‘Item が修正されませんでした'
+      flash.now[:danger] = 'アイテムが修正されませんでした'
       render :edit
     end
   end
 
   def destroy
     @item.destroy
-    flash[:success] = 'Item は正常に削除されました'
+    flash[:success] = 'アイテムは正常に削除されました'
     redirect_to items_url
   end
   

@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: swift_english_production
   username: swift_english
   password: <%= ENV['SWIFT_ENGLISH_DATABASE_PASSWORD'] %>

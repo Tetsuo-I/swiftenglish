@@ -1,5 +1,5 @@
-<h2>テスト一覧</h2>
-<p>Likeしたアイテムのみ表示/5秒経過かボタンを押すと答えが表示されます。</p>
+<h2 class="text-center">テストモード</h2>
+<p class="text-center mb-5">Likeしたアイテムのみ表示/5秒経過かボタンを押すと答えが表示されます。</p>
 
 <table class="table table-borderless mt-3">
   <tr><th>Japanese</th><th>English</th>
@@ -8,7 +8,9 @@
   <% end %>
 </table>
 
+<div class="mt-5">
 <%= paginate @tests %>
+</div>
 <script>
 
 function hyoji2()

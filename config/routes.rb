@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   
   get 'test', to: 'tests#index'
+  get 'about', to: 'abouts#index'
 end
